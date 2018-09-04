@@ -1,0 +1,59 @@
+var canvas;
+var Image;
+var angle = 0;
+var xpos, ypos; // Starting position of shape
+
+var widthheight = 100;
+
+var xspeed = 2.8; // Speed of the shape
+var yspeed = 2.2; // Speed of the shape
+
+var xdirection = 1; // Left or Right
+var ydirection = 1; // Top to Bottom
+
+
+function setup() 
+{
+  canvas = createCanvas(500,500);
+  Image = loadImage("Images/background.jpg");
+
+   imageMode(CENTER);
+
+    xpos = 500/2 ;
+    ypos = 500 /2;
+}
+
+function draw() 
+{
+  background('gray');
+
+    xpos = xpos + xspeed * xdirection;
+    ypos = ypos + yspeed * ydirection;
+
+
+
+    // Test to see if the shape exceeds the boundaries of the screen
+    // If it does, reverse its direction by multiplying by -1
+    if (xpos > width - widthheight || xpos < widthheight)
+    {
+        xdirection *= -1;
+    }
+    if (ypos > height - widthheight || ypos < widthheight)
+    {
+        ydirection *=  -1;
+    }
+
+    translate(10,10);
+    rotate(angle);
+    imageMode(CENTER);
+    angle = angle + 0.0019;
+    image(Image,xpos,ypos,widthheight,widthheight);
+
+}
+
+
+This is my code for roating image as well as image movement.
+
+in this i got some error like image is rotating as well as moving but its going out of canvas.
+
+so please help 
